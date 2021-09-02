@@ -31,3 +31,17 @@ As a matter of fact, when we use this method to find edges by canny algorithm
  to make a mask we could use an array of vertices which could make our region of interest as polygonal shape.
  If we adjust canny after making mask to our original image, we may have more unsought lines, which are error
  for lane line detection. so make canny threshold before applying mask to image.  
+ 
+ 
+*** And of course, we assume that our camera would be at the same position, whole time we try to detect lane lines.
+        So the region of interest may be differ case by case.  ;)
+    Using HoughLine Transform is one the simple ways to detect lines. to improve accuracy we need mor complex plan
+    which include detect another object to avoid highlight them as lane lines. 
+    
+now let's try Hough Transform step by step : 
+    1. edge detection. Use canny as detector or some kind of gradient like combined Sobel
+    2. Mapping of edge points to the Hough Space
+    3. find lines with infinite length by means of interpretation of those points with Thresholding 
+    or any possible method which you know.
+    4. Conversion of infinite lines to finite lines.
+    
